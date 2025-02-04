@@ -1,4 +1,4 @@
-package parte1.ejercicio2;
+package parte2.ejercicio2;
 
 import java.util.Scanner;
 
@@ -10,32 +10,35 @@ public class Principal {
 		
 		//llamaos a la clase Scanner
 		Scanner reader = new Scanner(System.in);
-		
-		//llamamos a la clase persona
-		Persona persona1 = new Persona();
-		
-		//llamamos a la clase persona
-		Persona persona2 = new Persona();
 
 		//creamos variable i
 		int i = 0;
 		
-		//variable de tipo string
+		//variable para guardar los datos temporalmente
+		String dni;
+		String nombre;
+		String apellidos;
+		int edad;
 		String edad1;
 		String edad2;
 		
-		//preguntamos por valor a asignar a las personas
+		
+			//preguntamos por valor a asignar a las personas
 			System.out.println("Dime un nombre, dni , apellido y edad :");
-			persona1.nombre = reader.next();
-			persona1.dni = reader.next();
-			persona1.apellido = reader.next();
-			persona1.edad = reader.nextInt();
+			nombre = reader.next();
+			dni = reader.next();
+			apellidos = reader.next();
+			edad = reader.nextInt();
+			
+			Persona persona1 = new Persona(dni, nombre, apellidos, edad);
 			
 			System.out.println("Dime otro nombre, dni , apellido y edad :");
-			persona2.nombre = reader.next();
-			persona2.dni = reader.next();
-			persona2.apellido = reader.next();
-			persona2.edad = reader.nextInt();
+			nombre = reader.next();
+			dni = reader.next();
+			apellidos = reader.next();
+			edad = reader.nextInt();
+			
+			Persona persona2 = new Persona(dni, nombre, apellidos, edad);
 			
 			//verificamos si es mayor de edad 
 			if (persona1.edad >= 18) {
@@ -56,5 +59,8 @@ public class Principal {
 			
 			//mostramos el dialogo de la segunda pèrsona
 			System.out.println(persona2.nombre + " " + persona2.apellido + " con dni " + persona2.dni + " es " + edad2 + " de edad.");
+
+		//cerramos el escaner
+		reader.close();
 	}
 }
