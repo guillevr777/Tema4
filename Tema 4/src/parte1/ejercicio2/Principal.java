@@ -2,7 +2,7 @@ package parte1.ejercicio2;
 
 import java.util.Scanner;
 
-import parte2.ejercicio2.Persona;
+import parte1.ejercicio2.Persona;
 
 public class Principal {
 

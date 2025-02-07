@@ -2,7 +2,7 @@ package parte4.ejercicio1;
 
 import java.util.Scanner;
 
-import parte3.ejercicio1.Punto;
+import parte4.ejercicio1.Punto;
 
 	public class Principal {
 
@@ -38,8 +38,7 @@ import parte3.ejercicio1.Punto;
 			y = reader.nextInt();
 				
 			//asignamos valores a 
-			numero1.setX(x);
-			numero1.setY(y);
+			numero1.setXY(x, y);
 				
 			//mostramos las cooredenadas
 			System.out.println(numero1.getX() +  "," + numero1.getY());
