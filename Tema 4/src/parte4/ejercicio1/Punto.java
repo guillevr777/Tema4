@@ -44,12 +44,12 @@ public class Punto {
 	}
 
 	public double distancia(Punto p) {
-
-		return x;
+		double distancia = Math.sqrt(Math.pow((p.coordenadaX - this.coordenadaX), 2) + Math.pow((p.coordenadaY - this.coordenadaY), 2));
+		return distancia;
 	}
 
+	 @Override
 	public String toString() {
-
-		return null;
+	    return "(" + x + ", " + y + ")";
 	}
 }

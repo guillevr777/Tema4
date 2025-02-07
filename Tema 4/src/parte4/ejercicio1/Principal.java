@@ -39,10 +39,31 @@ import parte4.ejercicio1.Punto;
 				
 			//asignamos valores a 
 			numero1.setXY(x, y);
+			
+			//mostramos las cooredenadas
+			System.out.println(numero1.getX() +  "," + numero1.getY());
+			
+			System.out.println("Cuanto quieres desplazar ambos puntos?");
+			x = reader.nextInt();
+			y = reader.nextInt();
+			
+			numero1.desplaza(x, y);
+			
+			//mostramos las cooredenadas
+			System.out.println(numero1.getX() +  "," + numero1.getY());
+			
+			//explicamos la distacia entre los dos objetos
+			System.out.println("Espacio entre la persona 1 y la 2 :");
+			
+			//mostramos la distancia entre ambos
+			System.out.println(numero1.distancia(numero2));
 				
 			//mostramos las cooredenadas
 			System.out.println(numero1.getX() +  "," + numero1.getY());
-		
+			
+			//mostramos las coordenadas to string
+			System.out.println(numero1.toString());	
+			
 			System.out.println(numero1.getX() * numero3.getX() + "," + numero2.getY() + numero3.getY());
 	}
 }
