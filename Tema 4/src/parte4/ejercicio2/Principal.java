@@ -14,8 +14,6 @@ public class Principal {
 		String nombre;
 		String apellidos;
 		int edad;
-		String edad1;
-		String edad2;
 		
 		//llamamos a los metodos
 		Persona persona1;
@@ -40,15 +38,23 @@ public class Principal {
 			//llamamos al metodo
 			persona2 = new Persona(dni, nombre, apellidos, edad);
 			
-			 // Verificamos si cada persona es mayor o menor de edad
-	        edad1 = (persona1.getEdad() >= 18) ? "mayor" : "menor";
-	        edad2 = (persona2.getEdad() >= 18) ? "mayor" : "menor";
+			if (persona1.esMayorEdad()) {
+				System.out.println("La primera persona es adulta");
+			} else {
+				System.out.println("La primera persona es menor");
+			}
+			
+			if (persona2.esJubilado()) {
+				System.out.println("La segunda persona esta jubilada.");
+			} else {
+				System.out.println("La segunda persona no esta jubilada.");
+			}
 			
 	        // Mostramos el diálogo de la primera persona
-	        System.out.println(persona1.getNombre() + " " + persona1.getApellidos() + " con DNI " + persona1.getDni() + " es " + edad1 + " de edad.");
+	        System.out.println(persona1.getNombre() + " " + persona1.getApellidos() + " con DNI " + persona1.getDni());
 
 	        // Mostramos el diálogo de la segunda persona
-	        System.out.println(persona2.getNombre() + " " + persona2.getApellidos() + " con DNI " + persona2.getDni() + " es " + edad2 + " de edad.");
+	        System.out.println(persona2.toString());
 
 		//cerramos el escaner
 		reader.close();

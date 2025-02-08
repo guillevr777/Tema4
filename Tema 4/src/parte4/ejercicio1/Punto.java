@@ -24,7 +24,7 @@ public class Punto {
 	 * @param y
 	 */
 	public void setXY(int x, int y) {
-		if (x < 0 || y < 0) {
+		if (x < 0 && y < 0) {
 			this.x = x;
 			this.y = y;
 		}
@@ -39,14 +39,14 @@ public class Punto {
 	}
 
 	public void desplaza(int dx, int dy) {
-		this.dx = dx;
-		this.dy = dy;
+		this.x = dx;
+		this.y = dy;
 	}
 
 	public double distancia(Punto p) {
-		double distancia = Math.sqrt(Math.pow((p.coordenadaX - this.coordenadaX), 2) + Math.pow((p.coordenadaY - this.coordenadaY), 2));
-		return distancia;
+	    return Math.sqrt(Math.pow((p.getX() - this.x), 2) + Math.pow((p.getY() - this.y), 2));
 	}
+
 
 	 @Override
 	public String toString() {

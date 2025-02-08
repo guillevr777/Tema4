@@ -55,14 +55,30 @@ public class Persona {
 	}
 
 	public void setEdad(int edad) {
-		if (edad > 0) {
+		if (this.edad > 0) {
 		this.edad = edad;
 		}
 	} 
 	public boolean esMayorEdad() {
-		if (persona > 18) {
+		if (this.edad > 18) {
 			return true;
-		}
+		} else {
 		return false;
+		}
+	}
+	public boolean esJubilado() {
+		if (this.edad > 65) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public int diferenciaEdad(Persona p) {
+		int diferencia;
+		diferencia = this.edad - p.edad;
+		return diferencia;
+	}
+	public String toString() {
+		  return "(DNI:" + this.dni + ", Nombre:" + this.nombre + ", Apellido:" + this.apellidos + " y Edad:" + this.edad + ")";
 	}
 }
