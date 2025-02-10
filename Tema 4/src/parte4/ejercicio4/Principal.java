@@ -4,37 +4,46 @@ import java.util.Scanner;
 
 public class Principal {
 
-	public static void main(String[] args) {
-		
-		//llamamos al metodo Scanner
-		Scanner reader = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
 
-		// declaramos variables para guardar temporalemnte los datos
-		int cantidad;
-		String nombre;
-		double IVA;
-		int precio;
-		double precioIva;
-		
-		// asignamos valores a sofa
-		cantidad = 13;
-		nombre = "PremierDelux";
-		IVA = 21;
-		precio = 356;
+        int cantidad;
+        String nombre;
+        double IVA;
+        double precio;
 
-		// llamamos al metodo sofa
-		Articulo sofa = new Articulo(nombre, precio, IVA, precioIva , cantidad);
-		
-		System.out.println(sofa.toString());
-		
-		//preguntamos por mas stock
-		System.out.println("Quieres añadir mas stock? Sofas : " + sofa.getCantidad());
-		sofa.almacenar(reader.nextInt());
-		
-		System.out.println("Apllicale un descuento:");
-		sofa.getPVPDescuento(reader.nextInt());
+        // Asignamos valores al artículo
+        cantidad = 13;
+        nombre = "PremierDelux";
+        IVA = 21;
+        precio = 356.0;
 
-		// deducimos el precio con iva
-		System.out.println(sofa.toString());
-	}
+        // Creamos un objeto de la clase Articulo
+        Articulo sofa = new Articulo(nombre, precio, IVA, cantidad);
+
+        System.out.println(sofa.toString());
+
+        // Preguntamos por más stock
+        System.out.println("¿Quieres añadir más stock? Actualmente hay " + sofa.getCantidad() + " unidades.");
+        try {
+            int stockAdicional = reader.nextInt();
+            sofa.almacenar(stockAdicional);
+        } catch (Exception e) {
+            System.out.println("Entrada no válida. No se añadirá stock.");
+        }
+
+        // Aplicamos un descuento
+        System.out.println("Introduce el porcentaje de descuento (0-100):");
+        try {
+            int descuento = reader.nextInt();
+            double precioConDescuento = sofa.getPVPDescuento(descuento);
+            System.out.println("El precio con el descuento aplicado es: " + precioConDescuento);
+        } catch (Exception e) {
+            System.out.println("Entrada no válida. No se aplicará ningún descuento.");
+        }
+
+        System.out.println(sofa.toString());
+
+        reader.close();
+    }
 }
