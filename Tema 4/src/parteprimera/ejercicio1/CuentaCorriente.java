@@ -1,73 +1,90 @@
 package parteprimera.ejercicio1;
 
 public class CuentaCorriente {
+    // Atributos
+    private String dni;
+    private String nombre;
+    private double saldo;
+    private String nacionalidad; // "Española" o "Extranjera"
 
-	private String dni;
-	private String nombre;
-	private int saldo;
-	private String nacionalidad;
-	
-	public CuentaCorriente (String dni, String nombre, int saldo, String nacionalidad) {
-		this.dni = dni;
-		this.nombre = nombre;
-		this.saldo = saldo;
-		this.nacionalidad = nacionalidad;
-	}
+    // Constructores
+    public CuentaCorriente(String dni, double saldoInicial) {
+        this.dni = dni;
+        this.nombre = "Sin nombre"; // Nombre por defecto
+        this.saldo = saldoInicial;
+        this.nacionalidad = "Española"; // Nacionalidad por defecto
+    }
 
-	public String getDni() {
-		return dni;
-	}
+    public CuentaCorriente(String dni, String nombre, double saldoInicial) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.saldo = saldoInicial;
+        this.nacionalidad = "Española"; // Nacionalidad por defecto
+    }
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
+    public CuentaCorriente(String dni, String nombre, double saldoInicial, String nacionalidad) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.saldo = saldoInicial;
+        this.nacionalidad = nacionalidad;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    // Getters y setters
+    public String getDni() {
+        return dni;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
-	public int getSaldo() {
-		return saldo;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setSaldo(int saldo) {
-		this.saldo = saldo;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
+    public double getSaldo() {
+        return saldo;
+    }
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}	
-	
-	public boolean sacarDinero (int dinero) {
-		if (this.saldo < dinero) {
-			return false;
-		} else {
-			this.saldo -= dinero;
-			return true;
-		}
-	}
-	
-	public void ingresarDinero (int dinero) {
-		this.saldo += dinero;
-	}
-	
-	public String toString () {
-		return " ";
-	}
-	
-	public boolean iguales (String dni, String nombre) {
-		if (dni.equals(this.dni) && nombre.equals(this.nombre)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    // Métodos
+    public boolean sacarDinero(double cantidad) {
+        if (cantidad > 0 && saldo >= cantidad) {
+            saldo -= cantidad;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean ingresarDinero(double cantidad) {
+        if (cantidad > 0) {
+            saldo += cantidad;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "CuentaCorriente{" +"DNI='" + dni + '\'' +", Nombre='" + nombre + '\'' +", Saldo=" + saldo +", Nacionalidad='" + nacionalidad + '\'' +'}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CuentaCorriente that = (CuentaCorriente) obj;
+        return dni.equals(that.dni) && nombre.equals(that.nombre);
+    }
 }
