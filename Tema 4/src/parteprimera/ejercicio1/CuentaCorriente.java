@@ -5,21 +5,21 @@ public class CuentaCorriente {
     private String dni;
     private String nombre;
     private double saldo;
-    private String nacionalidad; // "Española" o "Extranjera"
+    private String nacionalidad;
 
     // Constructores
     public CuentaCorriente(String dni, double saldoInicial) {
         this.dni = dni;
-        this.nombre = "Sin nombre"; // Nombre por defecto
+        this.nombre = "Sin nombre";
         this.saldo = saldoInicial;
-        this.nacionalidad = "Española"; // Nacionalidad por defecto
+        this.nacionalidad = "Española";
     }
 
     public CuentaCorriente(String dni, String nombre, double saldoInicial) {
         this.dni = dni;
         this.nombre = nombre;
         this.saldo = saldoInicial;
-        this.nacionalidad = "Española"; // Nacionalidad por defecto
+        this.nacionalidad = "Española";
     }
 
     public CuentaCorriente(String dni, String nombre, double saldoInicial, String nacionalidad) {
