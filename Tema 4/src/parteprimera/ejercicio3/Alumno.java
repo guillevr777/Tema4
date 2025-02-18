@@ -1,5 +1,7 @@
 package parteprimera.ejercicio3;
 
+import java.util.Objects;
+
 public class Alumno {
 
 	private String nombre;
@@ -7,11 +9,23 @@ public class Alumno {
 	private String segundoApellido;
 	private double nota;
 	
+	/**
+	 * Creamos el objeto metiendo por parametro los atributos
+	 * @param nombre nombre del objeto en string
+	 * @param nota nota del objeto en double
+	 */
 	public Alumno (String nombre, double nota) {
 		this.nombre = nombre;
 		this.nota = nota;
 	}
 	
+	/**
+	 * Creamos el objeto metiendo por parametro los atributos
+	 * @param nombre nombre nombre del objeto en string
+	 * @param primerApellido primerApellido del objeto en string
+	 * @param segundoApellido segundoApellido del objeto en string
+	 * @param nota nota del objeto en double
+	 */
 	public Alumno (String nombre, String primerApellido, String segundoApellido, double nota) {
 		this.nombre = nombre;
 		this.nota = nota;
@@ -52,29 +66,24 @@ public class Alumno {
 	}
 	
 	/**
-	 * ToString de el nombre y nota del alumno
+	 * ToString del nombre, apellidos y nota del alumno
 	 */
 	public String toString() {
 		return "Nombre:" + this.nombre + " Apellidos: " + this.primerApellido + " " + this.segundoApellido + " Nota:" + this.nota;
 	}
 	
+	/**
+	 * Hace equals del nombre de dos objetos
+	 */
 	@Override
 	public boolean equals(Object obj) {
-	    // Verificar si el objeto recibido es null
-	    if (obj == null) {
-	        return false;
-	    }
-	    
-	    // Verificar si el objeto es de la misma clase
-	    if (!(obj instanceof Principal)) {
-	        return false;
-	    }
-	    
-	    // Convertir obj a MiClase
-	    Principal otro = (Principal) obj;
-	    
-	    // Comparar el atributo nombre, evitando NullPointerException
-	    return this.nombre != null && this.nombre.equals(otro.nombre);
+		boolean iguales;
+		Alumno alum2 = (Alumno) obj;
+		if (this.nombre.equals(alum2.nombre)) {
+			iguales = true;
+		} else {
+			iguales = false;
+		}
+		return iguales;
 		}
 	}
-}
