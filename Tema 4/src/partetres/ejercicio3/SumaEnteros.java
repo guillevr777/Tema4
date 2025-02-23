@@ -16,10 +16,10 @@ public class SumaEnteros {
 	public int SumaEnteros (int numeroUno, int numeroDos) {
 		int SumaEnteros;
 		
-		if (numero == 0) {
-			
+		if (numeroUno == numeroDos) {
+			SumaEnteros = 0;
 		} else {
-			
+			SumaEnteros = numeroUno + SumaEnteros(numeroUno-1, numeroDos);
 		}
 		
 		return SumaEnteros;
