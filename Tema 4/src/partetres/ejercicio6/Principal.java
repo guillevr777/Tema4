@@ -8,5 +8,4 @@ public class Principal {
 		System.out.println(FuncionesMatematicas.potencia(11.4, 5));
 		System.out.println(FuncionesMatematicas.serieFibonacci(11));
 	}
-
 }
