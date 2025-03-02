@@ -3,6 +3,8 @@ package partecuatro.ejercicio1;
 import java.util.HashSet;
 import java.util.Set;
 
+import partecuatro.ejercicio2.Gestisimal;
+
 public class AlumnoCRUD {
 
 	// Atributo que va a ser la coleccion donde almacenar nuestros objetos

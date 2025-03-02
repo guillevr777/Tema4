@@ -12,6 +12,11 @@ public class Gestisimal {
         this.IVA = IVA;
         this.cantidad = cantidad;
     }
+    
+    public Gestisimal(String nombre, int cantidad) {
+    	this.nombre = nombre;
+    	this.cantidad = cantidad;
+    }
 
     public String getNombre() {
         return nombre;
@@ -76,7 +81,6 @@ public class Gestisimal {
             this.cantidad += cantidad;
         }
     }
-
     @Override
     public String toString() {
         return "(Nombre: " + nombre + ", Precio: " + precio + ", IVA: " + IVA + "%, Precio con IVA: " + getPVP() + ", Stock: " + cantidad + ")";
