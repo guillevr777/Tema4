@@ -8,7 +8,6 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		Pizza pizza;
 		String tamaño;
 		int codigo;
 		String tipo;
