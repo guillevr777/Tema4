@@ -2,35 +2,66 @@ package partecuatro.ejercicio1;
 
 public class Alumno {
 
-	private String nombre;
-	private double notaMedia;
-	
-	public Alumno(String nombre) {
-		if(nombre != null && !nombre.isBlank()) {
-			this.nombre = nombre;
-		}
-	}
-	
+	private String nombre = "Desconocido";
+
+	private double media = 0.0;
+
 	public Alumno(String nombre, double media) {
-		if(nombre != null && !nombre.isBlank()) {
+
+		if (nombre != null && !nombre.isBlank()) {
 			this.nombre = nombre;
 		}
-		if(media >=0 && media <= 10) {
-			this.notaMedia = media;
+
+		if (media >= 0 && media <= 10) {
+			this.media = media;
 		}
-	}
 
-	public double getNotaMedia() {
-		return notaMedia;
-	}
-
-	public void setNotaMedia(double notaMedia) {
-		this.notaMedia = notaMedia;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
-	
-	
+
+	public void setNombre(String nombre) {
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+	}
+
+	public double getMedia() {
+		return media;
+	}
+
+	public void setMedia(double media) {
+		if (media >= 0 && media <= 10) {
+			this.media = media;
+		}
+
+	}
+
+	@Override
+	public String toString() {
+
+		String cadena = "";
+
+		cadena += nombre + " " + media;
+
+		return cadena;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		Alumno alum2 = (Alumno) obj;
+
+		boolean iguales = false;
+
+		if (this.nombre.equalsIgnoreCase(alum2.nombre)) {
+			iguales = true;
+		}
+
+		return iguales;
+
+	}
+
 }

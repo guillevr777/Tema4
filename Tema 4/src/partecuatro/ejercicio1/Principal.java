@@ -4,111 +4,114 @@ import java.util.Scanner;
 
 public class Principal {
 
-	static Scanner scanner = new Scanner(System.in);
+	static Scanner reader = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		// Variable para el menú
-		int ans;
+		int opc;
+
+		String nombre;
+
+		double media;
+
+		Alumno alumno;
+
+		Alumno alum1 = new Alumno("Euseboi Tercero de la Familia", 2.1);
+		Alumno alum2 = new Alumno("Daniel Diaz Uña", 9.5);
+		Alumno alum3 = new Alumno("Adrian Moreno Montero", 5.7);
+		Alumno alum4 = new Alumno("Simple", 7.3);
+
+		AlumnoCRUD.añadeAlumno(alum1);
+		AlumnoCRUD.añadeAlumno(alum2);
+		AlumnoCRUD.añadeAlumno(alum3);
+		AlumnoCRUD.añadeAlumno(alum4);
 
 		do {
-			// Menú
-			System.out.println("1. Listado");
-			System.out.println("2. Nuevo Alumno");
-			System.out.println("3. Modificar");
-			System.out.println("4. Borrar");
-			System.out.println("5. Salir");
-			ans = scanner.nextInt();
-			scanner.nextLine(); // Añadir una línea aquí para evitar problemas de entrada.
+			menu();
+			System.out.println("Elige una opcion");
+			opc = reader.nextInt();
+			reader.nextLine();
 
-			// Acción seleccionada
-			switch (ans) {
-			case 1 -> AlumnoCRUD.imprimirLista();
-			case 2 -> nuevoAlumno();
-			case 3 -> modificar();
-			case 4 -> eliminar();
-			case 5 -> ans = 0;
+			switch (opc) {
+
+			case 1 -> {
+				AlumnoCRUD.listarAlumnos();
+			}
+			case 2 -> {
+
+				alumno = creaAlumno();
+				AlumnoCRUD.añadeAlumno(alumno);
+
+			}
+			case 3 -> {
+
+				nombre = pedirNombre();
+				System.out.println("Digame la nueva media");
+				media = reader.nextDouble();
+
+				if (AlumnoCRUD.modificarMedia(nombre, media)) {
+					System.out.println("Se pudo cambiar la media");
+				} else {
+					System.out.println("No se pudo modificar la media");
+				}
+
 			}
 
-		} while (ans != 0);
+			case 4 -> {
+
+				nombre = pedirNombre();
+				alumno = AlumnoCRUD.buscaAlumno(nombre);
+				if (alumno != null) {
+					AlumnoCRUD.borrarAlumno(alumno);
+				} else {
+					System.out.println("El alumno no existe");
+				}
+			}
+			case 5 -> System.out.println("Saliendo del sistema...");
+
+			default -> System.out.println("Opción no válida");
+
+			}
+
+		} while (opc != 5);
+
+		reader.close();
+
 	}
 
-	/**
-	 * Solicita los datos para crear un nuevo alumno y lo añade a la lista.
-	 */
-	public static void nuevoAlumno() {
+	static void menu() {
+		System.out.println("1. Listado");
+		System.out.println("2. Nuevo Alumno");
+		System.out.println("3. Modificar");
+		System.out.println("4. Borrar");
+		System.out.println("5. Salir");
+	}
+
+	static Alumno creaAlumno() {
+
 		String nombre;
+
 		double media;
+
+		Alumno al;
 
 		nombre = pedirNombre();
 
-		media = pedirMedia();
+		System.out.println("Digame la media");
+		media = reader.nextDouble();
 
-		Alumno nuevoAlumno = new Alumno(nombre, media);
+		al = new Alumno(nombre, media);
 
-		AlumnoCRUD.añadirObjeto(nuevoAlumno);
-		System.out.println("Alumno añadido correctamente");
+		return al;
 	}
 
-	/**
-	 * 
-	 * @return Devuelve la media
-	 */
-	private static double pedirMedia() {
-		double media;
-		System.out.println("Indica la media: ");
-		media = scanner.nextDouble();
-		scanner.nextLine();
-		return media;
-	}
-
-	/**
-	 * 
-	 * @return Devuelve el nombre
-	 */
 	private static String pedirNombre() {
+
 		String nombre;
-		System.out.println("Indica el nombre: ");
-		nombre = scanner.nextLine();
-		scanner.nextLine();
+
+		System.out.println("Digame el nombre del alumno");
+		nombre = reader.nextLine();
+
 		return nombre;
-	}
-
-	/**
-	 * Solicita el nombre de un alumno y modifica su media si el alumno existe.
-	 */
-	public static void modificar() {
-		String nombre;
-		double media;
-
-		nombre = pedirNombre();
-
-		if (AlumnoCRUD.buscarAlumno(nombre) != null) {
-			media = pedirMedia();
-
-			if (AlumnoCRUD.buscarAlumnoYModificar(nombre, media)) {
-				System.out.println("Datos modificados correctamente");
-			}
-
-		} else {
-			System.out.println("El alumno no existe");
-		}
-	}
-
-	/**
-	 * Solicita el nombre de un alumno y lo elimina de la lista si existe.
-	 */
-	public static void eliminar() {
-		String nombre;
-
-		nombre = pedirNombre();
-		if (AlumnoCRUD.buscarAlumno(nombre) != null) {
-
-			AlumnoCRUD.borrarAlumno(nombre);
-			System.out.println("Alumno borrado correctamente");
-
-		} else {
-			System.out.println("El alumno no existe");
-		}
 	}
 }
