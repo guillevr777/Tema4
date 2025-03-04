@@ -30,9 +30,7 @@ public class AlumnoCRUD {
 				a = aBusqueda;
 			}
 		}
-
 		return a;
-
 	}
 
 	public static boolean borrarAlumno(Alumno alum) {

@@ -3,6 +3,7 @@ package partecuatro.ejercicio5;
 import java.util.HashSet;
 import java.util.Set;
 
+import partecuatro.ejercicio4.Disco;
 import partecuatro.ejercicio5.CuentaCorriente;
 
 public class CuentaCrud {
@@ -20,12 +21,22 @@ public class CuentaCrud {
 		boolean verdad;
 		CuentaCorriente cuenta = new CuentaCorriente(dni, nombre, saldoInicial);
 		if (cuentas.add(cuenta)) {
-			System.out.println("Operacion exitosa.");
 			verdad = true;
 		} else {
-			System.out.println("Hubo algun problema con su operacion.");
 			verdad = false;
 		}
 		return verdad;
+	}
+	static CuentaCorriente encontrar(String dni) {
+		CuentaCorriente cuenta = null;
+		for (CuentaCorriente c : cuentas) {
+			if (c.getDni().equals(dni)) {
+			cuenta = c;
+			}
+		}
+		return cuenta;
+	}
+	public static boolean borrarCuenta(CuentaCorriente cuenta) {
+		return cuentas.remove(cuenta);
 	}
 }

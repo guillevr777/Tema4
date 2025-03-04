@@ -8,6 +8,10 @@ public class CuentaCorriente {
     private String nacionalidad;
 
     // Constructores
+    public CuentaCorriente(String dni) {
+    	this.dni = dni;
+    }
+    
     public CuentaCorriente(String dni, double saldoInicial) {
         this.dni = dni;
         this.nombre = "Sin nombre";
