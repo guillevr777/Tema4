@@ -14,7 +14,7 @@ public class Principal {
 		int hora;
 		int minuto;
 		int segundo;
-		Hora primera = null;
+		Hora españa = null;
 		
 		do {
 			System.out.println("Elige una opcion:");
@@ -30,14 +30,27 @@ public class Principal {
 			System.out.println("Dime los segundos");
 			segundo = reader.nextInt();
 			//Creamos un objeto de la clase hora
-			Hora primera = new Hora(hora, minuto, segundo);
+			españa = new Hora(hora, minuto, segundo);
 		}
 		case 2 -> {
-			System.out.println();
-			primera.getSegundo();
+			System.out.println("Hora en españa:");
+			System.out.println(españa.toString());
 		}
 		case 3 -> {
-			
+			segundo = españa.getSegundo();
+			minuto = españa.getMinuto();
+			hora = españa.getHora();
+			if (segundo == 59) {
+		        segundo = 0;
+		        if (minuto == 59) {
+		            minuto = 0;
+		            hora = (hora + 1) % 24;
+		        } else {
+		            minuto++;
+		        }
+		    } else {
+		        segundo++;
+		    }
 		}
 		case 4 -> {
 			System.out.println("Saliendo del programa...");
@@ -46,6 +59,6 @@ public class Principal {
 		} while (opc != 4);
 	}
 	public static void menu () {
-		System.out.println("1.Meter Hora\n2.Listar\3.Añadir segundo\n4.Salir");
+		System.out.println("1.Meter Hora\n2.Listar\n3.Añadir segundo\n4.Salir");
 	}
 }

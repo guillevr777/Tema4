@@ -33,4 +33,7 @@ public class Hora {
 	public void setHora(int hora) {
 		this.hora = hora;
 	}
+	public String toString() {
+		return this.hora + ":" + this.minuto + ":" + this.segundo;
+	}
 }
