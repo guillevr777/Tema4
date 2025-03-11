@@ -46,32 +46,24 @@ public class Fecha {
 	
 	public boolean esCorrecta (int dia, int mes, int año) {
 		boolean esReal = false;
-		if (this.esBisiesto(año) && dia > 1 && mes < 12) {
+		if (this.esBisiesto(año) && dia > 0 && mes < 12) {
 			esReal = true;
 		}
 		return esReal;
 	}
 	
-	public void diaSiguiente() {
-	    int[] diasPorMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	 public void diaSiguiente() {
 
-	    // Ajuste para los años bisiestos en febrero
-	    if (this.mes == 2 && esBisiesto(this.año)) {
-	        diasPorMes[1] = 29;
-	    }
-
-	    if (this.dia < diasPorMes[this.mes - 1]) {
 	        this.dia++;
-	    } else {
-	        this.dia = 1;
-	        if (this.mes == 12) {
-	            this.mes = 1;
-	            this.año++;
-	        } else {
-	            this.mes++;
+	        if (this.dia > 30) {
+	        	this.dia = 1;
+	        	this.mes++;
+	        }
+	        if (this.mes > 12) {
+	        	this.mes = 1;
+	        	this.año++;
 	        }
 	    }
-	}
 	
 	@Override
 	public String toString() {
