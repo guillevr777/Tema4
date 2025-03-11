@@ -48,7 +48,6 @@ public class Principal {
 			}
 			}
 		} while (opc != 4);
-		
 	}
 	static void menu () {
 		System.out.println("1.Comprobar fecha\n2.Avanzar 1 dia\n3.Listar");

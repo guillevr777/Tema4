@@ -52,16 +52,25 @@ public class Fecha {
 		return esReal;
 	}
 	
-	public void diaSiguiente () {
-		if (this.dia > 30) {
-			this.dia = 1;
-			if (this.mes == 12) {
-				this.mes = 1;
-				this.año++;
-			} else {
-				this.mes++;
-			}
-		}
+	public void diaSiguiente() {
+	    int[] diasPorMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	    // Ajuste para los años bisiestos en febrero
+	    if (this.mes == 2 && esBisiesto(this.año)) {
+	        diasPorMes[1] = 29;
+	    }
+
+	    if (this.dia < diasPorMes[this.mes - 1]) {
+	        this.dia++;
+	    } else {
+	        this.dia = 1;
+	        if (this.mes == 12) {
+	            this.mes = 1;
+	            this.año++;
+	        } else {
+	            this.mes++;
+	        }
+	    }
 	}
 	
 	@Override
