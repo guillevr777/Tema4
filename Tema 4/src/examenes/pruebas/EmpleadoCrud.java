@@ -1,4 +1,4 @@
-package examenes.añoanterior;
+package examenes.pruebas;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,9 +28,9 @@ public class EmpleadoCrud {
 	 * @param dni Dni del empleado que queremeos añadir a la colleccion
 	 * @return Devuelve true si lo consigue y false si no lo hace
 	 */
-	public static boolean crearEmpleado (String dni, String nombre, int sueldo) {		
+	public static boolean crearEmpleado (String dni) {		
 		boolean esVerdad = false;;
-		Empleado empleado = new Empleado(dni, nombre, sueldo);
+		Empleado empleado = new Empleado(dni);
 		if (empleados.add(empleado)) {
 			esVerdad = true;
 		} else {
@@ -39,30 +39,37 @@ public class EmpleadoCrud {
 		return esVerdad;
 	}
 	
-	/**
-	 * Borra al empleado de la coleccion
-	 * @param obj Objeto empleado a eliminar
-	 * @return Devuelve true si fue posible eliminarlo y false si no lo fue
-	 */
+	public static Empleado encontrar(String dni) {
+		Empleado empleado = null;
+		for (Empleado c : empleados) {
+			if (c.getDni().equals(dni)) {
+				empleado = c;
+			}
+		}
+		return empleado;
+	}
+	
 	public static boolean borrar (Object obj) {
 		return empleados.remove(obj);
 	}
 	
-	/**
-	 * Modifica las horas extras del empleado
-	 * @param hora Horas que hecho el empleado
-	 * @param dni Dni del empleado
-	 * @return Devuelve true si todo fue bien y false si no pudo hacerse nada
-	 */
 	public static boolean modificarHorasExtra (int hora, String dni) {
-		Empleado emp = null;
-		for (Empleado e : empleados) {
-			if (e.getDni().equalsIgnoreCase(dni)) {
-				emp = e;
-			}
+		boolean verdad = false;
+		if (encontrar(dni).setHoras(hora)) {
+			verdad = true;
 		}
-		return emp.setHoras(hora);
+		return verdad;
 	}
+	
+//	public static boolean modificarHorasExtra (int hora, String dni) {
+//		Empleado emp = null;
+//		for (Empleado e : empleados) {
+//			if (e.getDni().equalsIgnoreCase(dni)) {
+//				emp = e;
+//			}
+//		}
+//		return emp.setHoras(hora);
+//	}
 	
 //	public static boolean modificarHorasExtra (int hora, String dni) {
 //	boolean esVerdad = false;

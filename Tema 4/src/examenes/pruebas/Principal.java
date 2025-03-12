@@ -1,4 +1,4 @@
-package examenes.añoanterior;
+package examenes.pruebas;
 
 import java.util.Scanner;
 
@@ -24,6 +24,15 @@ public class Principal {
 			opc = reader.nextInt();
 			reader.nextLine();
 			switch (opc) {
+//			case 1 -> {
+//				System.out.println("Dime un dni con su letra.");
+//				dni = reader.nextLine();
+//				if (EmpleadoCrud.crearEmpleado(dni)) {
+//					System.out.println("Se realizo correctamente la operacion.");
+//				} else {
+//					System.out.println("No se realizo correctamente la operacion.");
+//				}
+//			}
 			case 1 -> {
 				System.out.println("Dime un dni con su letra.");
 				dni = reader.nextLine();
@@ -31,7 +40,7 @@ public class Principal {
 				nombre = reader.nextLine();
 				System.out.println("Dime un dni con su letra.");
 				sueldo = reader.nextInt();
-				if (EmpleadoCrud.crearEmpleado(dni, nombre, sueldo)) {
+				if (EmpleadoCrud.crearEmpleado(dni)) {
 					System.out.println("Se realizo correctamente la operacion.");
 				} else {
 					System.out.println("No se realizo correctamente la operacion.");
@@ -51,15 +60,12 @@ public class Principal {
 					System.out.println("Hubo algun percance.");
 				}
 			}
-			//Cambiado a estatico para poder llamar a setImporteHorasExtras() ya que afectara a todos los empleados
 			case 4 -> {
-				System.out.println("A cuando quieres cambiar la monetizacion de la horas extras?");
-				importeExtra = reader.nextInt();
-				if (Empleado.setImporteHorasExtra(importeExtra)) {
-					System.out.println("Operación realizada con exito.");
-				} else {
-					System.out.println("No se pudo llevar a cabo la operación.");
-				}
+//				if (EmpleadoCrud.modificarImporte()) {
+//					System.out.println("Operación realizada con exito.");
+//				} else {
+//					System.out.println("No se pudo llevar a cabo la operación.");
+//				}
 			}
 			case 5 -> {
 				System.out.println("Dime el dni del empleado a eliminar.");
@@ -76,7 +82,6 @@ public class Principal {
 			}
 		} while (opc != 6);
 	}
-	//Funcion que se encarga de mostrar el menu
 	static void menu () {
 		System.out.println("1.Añadir empleado.\r\n"
 				+ "2.Listar empleados.\r\n"

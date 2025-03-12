@@ -1,4 +1,4 @@
-package examenes.añoanterior;
+package examenes.pruebas;
 
 import java.util.Objects;
 
@@ -97,7 +97,11 @@ public class Empleado {
 	public int getImporte() {
 		return importe;
 	}
-	
+
+	public void setImporte(int importe) {
+		this.importe = importe;
+	}
+
 	public String getDni() {
 		return dni;
 	}
@@ -106,13 +110,12 @@ public class Empleado {
 		return nombre;
 	}
 	
-	//La validacion da asco preguntar por como hacer bien
 	/**
 	 * Setter de tipo booleano para indicar un importe por hora extra
 	 * @param importe Importe que cobrara por hora
 	 * @return Devuelve verdadero si se establece el importe o falso en caso contrario
 	 */
-	public static boolean setImporteHorasExtra (int importe) {
+	public boolean setImporteHorasExtra (int importe) {
 		boolean esVerdad = false;
 		
 		if (Empleado.importe != importe) {
@@ -126,8 +129,7 @@ public class Empleado {
 	public int calcularExtra () {
 		return this.horas * Empleado.importe;
 	}
-	
-	//Mejor separar el calcularExtra()? o hacerlo del tiron dentro?
+		
 	public int sueldoBruto () {
 		int sueldoBruto = 0;
 		
