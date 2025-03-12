@@ -44,7 +44,11 @@ public class Principal {
 				
 			}
 			case 4 -> {
-				
+				if (EmpleadoCrud.modificarImporte()) {
+					System.out.println("Operación realizada con exito.");
+				} else {
+					System.out.println("No se pudo llevar a cabo la operación.");
+				}
 			}
 			case 5 -> {
 				System.out.println("Dime el dni del empleado a eliminar.");

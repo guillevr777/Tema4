@@ -40,5 +40,25 @@ public class EmpleadoCrud {
 		return empleados.remove(obj);
 	}
 	
+	static boolean modificarImporte (int nuevoImporte) {
+		boolean esVerdad = false;
+		
+		Empleado.importeHoraExtra(nuevoImporte);
+		
+		if (empleados.) {
+			esVerdad = true;
+		}
+		
+		return esVerdad;
+	}
 	
+	public static boolean modificarHorasExtra (int hora, String dni) {
+		Empleado emp = null;
+		for (Empleado e : empleados) {
+			if (e.getDni().equalsIgnoreCase(dni)) {
+				emp = e;
+			}
+		}
+		return emp.setHoras(hora);
+	}
 }

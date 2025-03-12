@@ -7,7 +7,7 @@ public class Empleado {
 	private String dni;
 	private String nombre;
 	private int sueldo;
-	private int horas;
+	private static int horas;
 	private int importe = 0;
 	
 	public Empleado (String dni) {
@@ -41,8 +41,13 @@ public class Empleado {
 		return horas;
 	}
 
-	public void setHoras(int horas) {
-		this.horas = horas;
+	public boolean setHoras(int horas) {
+		boolean esVerdad = false;
+		if (horas > 0) {
+			this.horas = horas;
+			esVerdad = true;
+		}
+		return esVerdad;
 	}
 
 	public int getImporte() {
@@ -61,14 +66,14 @@ public class Empleado {
 		return nombre;
 	}
 	
-	public int importeHoraExtra () {
-		return this.horas * 10;
+	public static int importeHoraExtra () {
+		return Empleado.importeHoraExtra();
 	}
-	
+		
 	public int sueldoBruto () {
 		int sueldoBruto = 0;
 		
-		sueldoBruto = sueldo + importeHoraExtra();
+		sueldoBruto = sueldo + this.importe;
 		
 		return sueldoBruto;
 	}
