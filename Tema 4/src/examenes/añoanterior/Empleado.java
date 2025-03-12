@@ -8,7 +8,7 @@ public class Empleado {
 	private String nombre;
 	private int sueldo;
 	private int horas;
-	private int importe;
+	private int importe = 0;
 	
 	public Empleado (String dni) {
 		if (dni != null) {

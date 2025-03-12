@@ -25,19 +25,35 @@ public class Principal {
 			
 			switch (opc) {
 			case 1 -> {
-				
+				System.out.println("Dime un dni con su letra.");
+				dni = reader.nextLine();
+				if (EmpleadoCrud.crearEmpleado(dni)) {
+					System.out.println("Se realizo correctamente la operacion.");
+				} else {
+					System.out.println("No se realizo correctamente la operacion.");
+				}
 			}
 			case 2 -> {
-							
+				EmpleadoCrud.listado();		
 			}
 			case 3 -> {
+				System.out.println("Dime el dni del empleado.");
+				dni = reader.nextLine();
+				System.out.println("Dime las horas extras que ha trabajado.");
+				horas = reader.nextInt();
 				
 			}
 			case 4 -> {
 				
 			}
 			case 5 -> {
-				
+				System.out.println("Dime el dni del empleado a eliminar.");
+				dni = reader.nextLine();
+				if (EmpleadoCrud.borrar(dni)) {
+					System.out.println("El empleado fue eliminado de la BBDD.");
+				} else {
+					System.out.println("Hubo algun problema con la BBDD.");
+				}
 			}
 			case 6 -> {
 				System.out.println("Saliendo del sistema…");
