@@ -27,7 +27,7 @@ public class Empleado {
 	/**
 	 * Atributo donde se guardara el importe de las horas extras del empleado
 	 */
-	private static int importeHorasExtras;
+	private static int importeHorasExtras = 10;
 
 	/**
 	 * Constructor de la clase Empleado
@@ -115,7 +115,20 @@ public class Empleado {
 		return this.dni + " " + this.nombre + "\nHoras Extras : " + this.horasExtras + "\nSueldo Bruto : " + this.sueldoBruto();
 	}
 	
-	//falta eqquals
+	/**
+	 * Compara dos objetos y devuleve true si son iguales y false si no lo son
+	 */
+	@Override
+	public boolean equals (Object obj) {
+		boolean iguales = false;
+		
+		Empleado empleado = (Empleado) obj;
+		if (this.dni.equalsIgnoreCase(empleado.dni)) {
+			iguales = true;
+		}
+		
+		return iguales;
+	}
 	
 	/**
 	 * Se encarga de asignarle un codigo al empleado usando el dni

@@ -2,6 +2,8 @@ package examenes.prueba2;
 
 import java.util.Scanner;
 
+import examenes.añoanterior.Empleado;
+
 public class Principal {
 
 	//Llamamos al escaner
@@ -65,7 +67,13 @@ public class Principal {
 				}
 			}
 			case 4 -> {
-				
+				System.out.println("A cuando quieres cambiar la monetizacion de la horas extras?");
+				importeHorasExtra = reader.nextInt();
+				if (Empleado.setImporteHorasExtra(importeHorasExtra)) {
+					System.out.println("Operación realizada con exito.");
+				} else {
+					System.out.println("No se pudo llevar a cabo la operación.");
+				}
 			}
 			case 5 -> {
 				System.out.println("Dime el dni del empleado a eliminar.");

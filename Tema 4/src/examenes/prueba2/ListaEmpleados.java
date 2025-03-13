@@ -30,10 +30,8 @@ public class ListaEmpleados {
 	public static boolean nuevoEmpleado (String dni, String nombre, int sueldo) {
 		boolean exito = false;
 		Empleado emp = new Empleado(dni, nombre, sueldo);
-		for (Empleado em : empleados) {
-		if (em.equals(emp)) {
+		if (empleados.add(emp)) {
 			exito = true;
-		}
 		}
 		return exito;
 	}
@@ -48,7 +46,7 @@ public class ListaEmpleados {
 		boolean exito = false;
 		Empleado emp = null;
 		for (Empleado em : empleados) {
-			if (dni.equals(em)) {
+			if (em.getDni().equalsIgnoreCase(dni)) {
 				emp = em;
 				emp.setHorasExtras(horasExtras);
 				exito = true;
