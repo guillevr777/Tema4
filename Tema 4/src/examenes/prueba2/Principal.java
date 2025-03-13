@@ -2,7 +2,7 @@ package examenes.prueba2;
 
 import java.util.Scanner;
 
-import examenes.añoanterior.Empleado;
+import examenes.prueba2.Empleado;
 
 public class Principal {
 

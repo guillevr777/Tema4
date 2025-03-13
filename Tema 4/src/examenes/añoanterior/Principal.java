@@ -8,81 +8,61 @@ public class Principal {
 	
 	public static void main(String[] args) {
 
-		Empleado emp = null;
-		int opc;
-		String dni;
-		String nombre;
-		int sueldo;
-		int horas;
-		int importeExtra;
-		
-		System.out.println("Bienvenido a la BBDD de los empleados");
-		
-		do {
-			System.out.println("Dime que opcion quieres?");
-			menu();
-			opc = reader.nextInt();
-			reader.nextLine();
-			switch (opc) {
-			case 1 -> {
-				System.out.println("Dime un dni con su letra.");
-				dni = reader.nextLine();
-				System.out.println("Dime un dni con su letra.");
-				nombre = reader.nextLine();
-				System.out.println("Dime un dni con su letra.");
-				sueldo = reader.nextInt();
-				if (EmpleadoCrud.crearEmpleado(dni, nombre, sueldo)) {
-					System.out.println("Se realizo correctamente la operacion.");
-				} else {
-					System.out.println("No se realizo correctamente la operacion.");
+			int opc;
+			String dni;
+			String nombre;
+			int sueldoBruto;
+			int horasExtra;
+			int importeHorasExtra;
+			
+			do {
+				menu();
+				opc = reader.nextInt();
+				reader.nextLine();
+				switch (opc) {
+				case 1 -> {
+					dni = dni();
+					System.out.println("Dime el nombre");
+					nombre = reader.nextLine();
+					System.out.println("Dime el sueldoBruto");
+					sueldoBruto = reader.nextInt();
+					reader.nextLine();
+					if (ListaEmpleados.añadirEmpleado(dni, nombre, sueldoBruto)) {
+						System.out.println("Se pudo");
+					}
 				}
-			}
-			case 2 -> {
-				EmpleadoCrud.listado();		
-			}
-			case 3 -> {
-				System.out.println("Dime el dni del empleado.");
-				dni = reader.nextLine();
-				System.out.println("Dime las horas extras que ha trabajado.");
-				horas = reader.nextInt();
-				if (EmpleadoCrud.modificarHorasExtra(horas, dni)) {
-					System.out.println("Operacion realizada con exito.");
-				} else {
-					System.out.println("Hubo algun percance.");
+				case 2 -> {
+					ListaEmpleados.listar();
 				}
-			}
-			//Cambiado a estatico para poder llamar a setImporteHorasExtras() ya que afectara a todos los empleados
-			case 4 -> {
-				System.out.println("A cuando quieres cambiar la monetizacion de la horas extras?");
-				importeExtra = reader.nextInt();
-				if (Empleado.setImporteHorasExtra(importeExtra)) {
-					System.out.println("Operación realizada con exito.");
-				} else {
-					System.out.println("No se pudo llevar a cabo la operación.");
+				case 3 -> {
+					dni = dni();
+					
 				}
-			}
-			case 5 -> {
-				System.out.println("Dime el dni del empleado a eliminar.");
-				dni = reader.nextLine();
-				if (EmpleadoCrud.borrar(dni)) {
-					System.out.println("El empleado fue eliminado de la BBDD.");
-				} else {
-					System.out.println("Hubo algun problema con la BBDD.");
+				case 4 -> {
+					
 				}
-			}
-			case 6 -> {
-				System.out.println("Saliendo del sistema…");
-			}
-			}
-		} while (opc != 6);
+				case 5 -> {
+					dni = dni();
+					if (ListaEmpleados.eliminarEmpleado(dni)) {
+						System.out.println("Se pudo");
+					}
+				}
+				case 0 -> {
+					System.out.println("Saliste.");
+				}
+				default -> {
+					System.out.println("Error");
+				}
+				}
+			} while (opc != 0);
 	}
-	//Funcion que se encarga de mostrar el menu
-	static void menu () {
-		System.out.println("1.Añadir empleado.\r\n"
-				+ "2.Listar empleados.\r\n"
-				+ "3.Modificar horas extra.\r\n"
-				+ "4.Modificar importe horas extra.\r\n"
-				+ "5.Eliminar empleado.\r\n"
-				+ "6.Salir.");
+	public static void menu () {
+		System.out.println("1.Crear Empleado\n2.Listar\n3.Modificar Horas Extra\n4.Modificar Importe Horas Extra\n5.Eliminar Empleado\n0.Salir");
+	}
+	public static String dni () {
+		String dni = "";
+		System.out.println("Dime tu dni");
+		dni = reader.nextLine();
+		return dni;
 	}
 }

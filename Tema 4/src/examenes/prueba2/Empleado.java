@@ -68,39 +68,15 @@ public class Empleado {
 	}
 
 	/**
-	 * Setter del importe que cobrara por hora extra
-	 * @param importeHorasExtras Importe por cada hora extra
-	 */
-	public void setImporteHorasExtras(int importeHorasExtras) {
-		this.importeHorasExtras = importeHorasExtras;
-	}
-	
-	/**
-	 * Calcula el complemento
-	 * @return Devuelve la multiplicacion de horas por el importe
-	 */
-	public double calcularComplemento () {
-		return this.horasExtras * this.importeHorasExtras;
-	}
-	
-	/**
-	 * calcula el sueldo bruto
-	 * @return Devuelve el sueldo base por el complemento
-	 */ 
-	public double sueldoBruto () {
-		return this.sueldoBase * this.calcularComplemento();
-	}
-	
-	/**
 	 * Modifica el importe por hora extra 
 	 * @param importe Importe por cada hora extra
 	 * @return Devuelve true si funciona y false si no lo hace
 	 */
-	public boolean modificarImporteHorasExtra (int importe) {
+	public static boolean setImporteHorasExtra (int importe) {
 		boolean exito = false;
 		
-		Empleado.importeHorasExtras = importe;
-		if (Empleado.importeHorasExtras == importe) {
+		if (importe > 0) {
+			Empleado.importeHorasExtras = importe;
 			exito = true;
 		}
 		
@@ -108,11 +84,27 @@ public class Empleado {
 	}
 	
 	/**
+	 * Calcula el complemento
+	 * @return Devuelve la multiplicacion de horas por el importe
+	 */
+	public double calcularComplemento () {
+		return this.horasExtras * Empleado.importeHorasExtras;
+	}
+	
+	/**
+	 * calcula el sueldo bruto
+	 * @return Devuelve el sueldo base por el complemento
+	 */ 
+	public double sueldoBruto () {
+		return this.sueldoBase + calcularComplemento();
+	}
+	
+	/**
 	 * Muestra todos los datos del empleado en String
 	 */
 	@Override
 	public String toString () {
-		return this.dni + " " + this.nombre + "\nHoras Extras : " + this.horasExtras + "\nSueldo Bruto : " + this.sueldoBruto();
+		return this.dni + " " + this.nombre + "\nHoras Extras : " + this.horasExtras + "\nSueldo Bruto : " + sueldoBruto();
 	}
 	
 	/**
