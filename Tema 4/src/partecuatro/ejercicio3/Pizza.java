@@ -4,7 +4,7 @@ public class Pizza {
 
 	private int codigo;
 	private String tamaño;
-	private String tipo;
+	private Tipo tipo;
 	private String estado;
 	
 	/**
@@ -17,7 +17,7 @@ public class Pizza {
 	/**
 	 * Conjunto de constantes predefinidas para tipo
 	 */
-	enum tipo {
+	enum Tipo {
 		Margarita,CuatroQuesos,Funghi
 	}
 	
@@ -37,7 +37,17 @@ public class Pizza {
 	public Pizza (int codigo, String tamaño, String tipo) {
 		this.codigo = codigo;
 		this.tamaño = tamaño;
-		this.tipo = tipo;
+		compruebaTipo(tipo);
+	}
+	
+	private boolean compruebaTipo (String tipo) {
+		switch (tipo) {
+		case "Margarita","CuatroQuesos","Funghi" -> {
+			this.tipo = Tipo.valueOf(tipo);
+			return true;
+			}
+		}
+		return false;
 	}
 	
 	public int getCodigo() {

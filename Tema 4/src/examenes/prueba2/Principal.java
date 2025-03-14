@@ -42,11 +42,8 @@ public class Principal {
 			//Switch que utiliza el entero de la variable opc para elegir opcion
 			switch (opc) {
 			case 1 -> {
-				System.out.println("Dime el dni del empleado, su nombre y su sueldo base.");
-				dni = reader.nextLine();
-				nombre = reader.nextLine();
-				sueldoBase = reader.nextInt();
-				if (ListaEmpleados.nuevoEmpleado(dni, nombre, sueldoBase)) {
+				Empleado emp = crearEmpleado();
+				if (ListaEmpleados.nuevoEmpleado(emp)) {
 					System.out.println("Operacion realiza con exito.");
 				} else {
 					System.out.println("Hubo algun percance...");
@@ -56,8 +53,7 @@ public class Principal {
 				ListaEmpleados.listarEmpleados();
 			}
 			case 3 -> {
-				System.out.println("Dime el dni del empleado y las horas extras que ha hechado.");
-				dni = reader.nextLine();
+				dni = dni();
 				horasExtras = reader.nextInt();
 				reader.nextLine();
 				if (ListaEmpleados.modificarHorasExtras(dni, horasExtras)) {
@@ -76,8 +72,7 @@ public class Principal {
 				}
 			}
 			case 5 -> {
-				System.out.println("Dime el dni del empleado a eliminar.");
-				dni = reader.nextLine();
+				dni = dni();
 				if (ListaEmpleados.eliminarEmpleado(dni)) {
 					System.out.println("Operacion realizada con exito.");
 				} else {
@@ -103,5 +98,31 @@ public class Principal {
 						 + "4.Modificar Importe Hora Extra\n"
 						 + "5.Eliminar Empleado\n"
 						 + "0.Salir Del Programa");
+	}
+	
+	public static Empleado crearEmpleado() {
+		
+		String dni;
+		String nombre;
+		int sueldo;
+		
+		dni = dni();
+		
+		System.out.println("nombre");
+		nombre = reader.nextLine();
+		
+		System.out.println("sueldo");
+		sueldo = reader.nextInt();
+		
+		Empleado e1 = new Empleado(dni, nombre, sueldo);
+		
+		return e1;
+	}
+	
+	private static String dni() {
+		String dni;
+		System.out.println("dni");
+		dni = reader.nextLine();
+		return dni;
 	}
 }

@@ -56,7 +56,9 @@ public class Empleado {
 	 * @param sueldoBase Sueldo base que cobrara el empleado
 	 */
 	public void setSueldoBase(int sueldoBase) {
+		if (!dni.isBlank() && dni != null) {
 		this.sueldoBase = sueldoBase;
+		}
 	}
 
 	/**
@@ -79,7 +81,6 @@ public class Empleado {
 			Empleado.importeHorasExtras = importe;
 			exito = true;
 		}
-		
 		return exito;
 	}
 	

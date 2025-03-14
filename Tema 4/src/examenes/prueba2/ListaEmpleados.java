@@ -27,9 +27,9 @@ public class ListaEmpleados {
 	 * @param sueldo Sueldo del empleado
 	 * @return Devuelve un booleano , true si se consiguio hacer la operacion y false si no se pudo
 	 */
-	public static boolean nuevoEmpleado (String dni, String nombre, int sueldo) {
+	public static boolean nuevoEmpleado (Object obj) {
 		boolean exito = false;
-		Empleado emp = new Empleado(dni, nombre, sueldo);
+		Empleado emp = (Empleado) obj;
 		if (empleados.add(emp)) {
 			exito = true;
 		}
